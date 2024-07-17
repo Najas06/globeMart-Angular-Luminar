@@ -1,0 +1,37 @@
+<div class="row m-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-4 d-flex align-items-center justify-content-center flex-column shadow p-5">
+       <div class="d-flex align-items-center justify-content-center flex-column border border-5 " style="border-color: #6389cc; width: 70px; border-radius: 50%;"> 
+        <i class="fa-regular fa-user fa-2xl" style="color: rgb(184, 6, 6);"></i></div>
+        <h3 class="mt-3 " style="color: rgb(184, 6, 6);"> Join Family</h3>
+        <form class="shadow d-flex align-items-center justify-content-center flex-column w-100 px-5 py-3" [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="mb-3">
+                <input type="text" placeholder="Enter UserName" class="form-control w-100" formControlName="username" name="uname">
+                <span *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="text-warning">Invalid Username</span>
+            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Enter Email" class="form-control w-100" formControlName="email" name="uemail">
+                <span *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-warning">Invalid Email</span>
+            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Enter Password" class="form-control w-100" formControlName="password" name="upassword">
+                <span *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="text-warning">Invalid Password</span>
+            </div>
+            <div class="mb-3 w-100">
+                <button class="btn w-100 text-light" style="background-color: rgb(184, 6, 6);" >Register</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-4 rounded d-flex justify-content-center align-items-center flex-column" style="background-image: url('https://img.freepik.com/free-photo/woman-casual-white-sweater-sunglasses-rgb(184, 6, 6)-wall_343596-5382.jpg?size=626&ext=jpg&ga=GA1.1.553759715.1719734659&semt=sph'); background-size: 650px; background-repeat: no-repeat; background-position: center; ">
+        <h3 class="text-light">
+            <i class="fa-solid fa-spinner fa-spin-pulse me-3 fa-2x"></i><b>GlobMart</b>
+        </h3>
+        <h5 class="text-light">Already have an Accout</h5>
+        <h6 class="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem veritatis voluptate </h6>
+        <a class="btn btn-outline-light mt-3" routerLink="/login">Login</a>
+    </div>
+
+    <div class="col-md-2"></div>
+
+</div>

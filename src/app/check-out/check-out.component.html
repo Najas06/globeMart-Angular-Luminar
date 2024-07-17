@@ -1,0 +1,50 @@
+<!-- header  -->
+<app-header></app-header>
+
+<div class="row w-100 my-5 ">
+    <!-- <div class="col-md-1"></div> -->
+    <div class="col-md-6">
+        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/time-delivery-truck-8323548-6634145.png" alt=""
+            style="width: 100%;">
+    </div>
+    <div class="col-md-6" *ngIf="!paymentStatus">
+        <form [formGroup]="checkOutForm" class="border p-3 p-md-5 rounded shadow w-100" style="background-image: url(https://i.pinimg.com/236x/a0/26/1d/a0261d3d57b2c872de9bc37083fc3233.jpg);">
+            <h3 class="text-center text-light bg-dark rounded p-3 fw-bold">Delivery Address</h3>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="name" formControlName="uname" name="uname">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Apartment Number" formControlName="flat" name="flate">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Place" formControlName="place" name="place">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Pincode" formControlName="pincode" name="pincode">
+            </div>
+            <div class="mb-3 d-flex justify-content-center gap-2">
+                <button class="btn btn-danger " (click)="cancel()">Cancel</button>
+                <button class="btn btn-success" (click)="confirmAddress()">confirm Address</button>
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf="paymentStatus" class="border rounded shadow p-4 col-md-6 text-center">
+        <h3 class="text-danger">confirm Address</h3>
+        <h5>Name: {{checkOutForm.value.uname}}</h5>
+        <h5>Apartment : {{checkOutForm.value.flat}}</h5>
+        <h5>Place of Delivery : {{checkOutForm.value.place}}</h5>
+        <h5>pincode : {{checkOutForm.value.pincode}}</h5>
+        <h5>Grand Total : {{grandTotal}}</h5>
+
+        <div class="d-flex justify-content-center mt-5">
+            <button class="btn btn-warning" (click)="back()">Back</button>
+            <button class="btn btn-success" (click)="payment()">Make Payment</button>
+        </div>
+
+        <div *ngIf="payStatus" class="mt-4">
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </div>
+    </div>
+    <!-- <div class="col-md-1"></div> -->
+</div>

@@ -1,0 +1,38 @@
+<app-header></app-header>
+<section class="py-5">
+    <h2 class="text-center text-danger text-underline">Wish List</h2>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div *ngFor="let product of allWishListProduct" class="col mb-1 shadow">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]='product.image' alt="..." style="height: 60%;"/>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title.slice(0,20)}}</h5>
+                            <!-- Product price-->
+                            <span class="fw-bolder text-success">{{product.price}}</span>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                       <div class="d-flex justify-content-between">
+                        <a class="btn btn-outline-danger mt-auto" (click)="removeItemProducts(product._id)" ><i class="fa-solid fa-trash"></i></a>
+                        <a class="btn btn-outline-success mt-auto" (click)="addToCart(product)"><i class="fa-solid fa-cart-shopping"></i></a>
+                       </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+</section>
+
+<section *ngIf="allWishListProduct.length == 0" style="width: 100%; height: 80vh;" class="d-flex justify-content-center flex-column align-items-center">
+    <img src="https://behalacollege.in/display_board/assets/images/empty-wishlist.png" alt="" width="600">
+    <div>
+        <button class="btn btn-outline-success mb-5" routerLink="/">Back to Home </button>
+    </div>
+</section>
